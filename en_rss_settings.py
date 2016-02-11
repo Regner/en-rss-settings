@@ -1,5 +1,6 @@
 
 
+from gcloud import datastore
 from eveauth.contrib.flask import authenticate
 
 from flask import Flask, abort
