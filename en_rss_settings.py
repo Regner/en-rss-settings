@@ -88,7 +88,7 @@ class InternalSettings(Resource):
         client = get_client()
         
         query = client.query(kind=SETTINGS_KIND)
-        query.add_filter(feed_id, '==', 'TRUE')
+        query.add_filter(feed_id, '=', 'TRUE')
         
         data = [x.id for x in query.fetch()]
         
