@@ -84,12 +84,16 @@ class InternalSettings(Resource):
         query = client.query(kind=SETTINGS_KIND)
         query.add_filter(feed_id, '==', 'TRUE')
         
-        return [x.id for x in query.fetch()]
+        data = [x.id for x in query.fetch()]
+        
+        app.logger.info('{}'.format(data))
+        
+        return data
     
 
 api.add_resource(ExternalSettings, '/external/')
 api.add_resource(ExternalCharacterSettings, '/external/characters/<int:character_id>/')
-api.add_resource(InternalSettings, '/internal/<string:feed_id>/')
+api.add_resource(InternalSettings, '/internal/<string:feed_id>')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8080)
