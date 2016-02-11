@@ -1,5 +1,7 @@
 
 
+import logging
+
 from gcloud import datastore
 from eveauth.contrib.flask import authenticate
 
@@ -18,6 +20,10 @@ SERVICES = {
     'cz': {'name': 'Crossing Zebras', 'official': False},
     'en24': {'name': 'EVE News 24', 'official': False},
 }
+
+stream_handler = logging.StreamHandler()
+stream_handler.setLevel(logging.INFO)
+app.logger.addHandler(stream_handler)
 
 # Datastore Settings
 DS_CLIENT = datastore.Client()
