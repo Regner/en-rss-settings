@@ -16,7 +16,7 @@ SERVICES = {
     'eve-dev-blogs': {'name': 'EVE Online Developers Dev Blogs','official': True},
     'cz': {'name': 'Crossing Zebras', 'official': False},
     'en24': {'name': 'EVE News 24', 'official': False},
-]
+}
 
 # Datastore Settings
 DS_CLIENT = datastore.Client()
