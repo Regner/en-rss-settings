@@ -15,11 +15,31 @@ api = Api(app)
 # App Settings
 app.config['BUNDLE_ERRORS'] = True
 SERVICES = {
-    'eve-news': {'name': 'EVE Online News', 'official': True},
-    'eve-blogs': {'name': 'EVE Online Dev Blogs', 'official': True},
-    'eve-dev-blogs': {'name': 'EVE Online Developers Dev Blogs','official': True},
-    'cz': {'name': 'Crossing Zebras', 'official': False},
-    'en24': {'name': 'EVE News 24', 'official': False},
+    'eve-news': {
+        'name': 'EVE Online News',
+        'url': 'http://newsfeed.eveonline.com/en-US/44/articles/page/1/20',
+        'official': True,
+    },
+    'eve-blogs': {
+        'name': 'EVE Online Dev Blogs',
+        'url': 'http://newsfeed.eveonline.com/en-US/2/articles/page/1/20',
+        'official': True,
+    },
+    'eve-dev-blogs': {
+        'name': 'EVE Online Developers Dev Blogs',
+        'url': 'http://newsfeed.eveonline.com/en-US/95/articles',
+        'official': True,
+    },
+    'cz': {
+        'name': 'Crossing Zebras',
+        'url': 'http://crossingzebras.com/feed/',
+        'official': False,
+    },
+    'en24': {
+        'name': 'EVE News 24',
+        'url': 'http://evenews24.com/feed/',
+        'official': False,
+    },
 }
 
 stream_handler = logging.StreamHandler()
