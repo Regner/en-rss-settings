@@ -48,7 +48,7 @@ class ExternalSettings(Resource):
 
 
 class ExternalCharacterSettings(Resource):
-    @authenticate()
+    @authenticate(match_data=['character_id'])
     def get(self, character_id):
         client = get_client()
         character_settings = client.get(client.key(SETTINGS_KIND, character_id))
@@ -59,7 +59,7 @@ class ExternalCharacterSettings(Resource):
         return dict(character_settings)
         
         
-    @authenticate()
+    @authenticate(match_data=['character_id'])
     def put(self, character_id):
         parser = reqparse.RequestParser()
         
@@ -67,6 +67,8 @@ class ExternalCharacterSettings(Resource):
             parser.add_argument(feed, type=bool, help=SERVICES[feed]['name'])
 
         args = parser.parse_args(strict=True)
+
+        app.logger.info('Put request, args: {}'.format(args))
         
         client = get_client()
         character_settings = client.get(client.key(SETTINGS_KIND, character_id))
@@ -79,6 +81,8 @@ class ExternalCharacterSettings(Resource):
                 character_settings[feed] = args[feed]
 
         client.put(character_settings)
+
+        app.logger.info('character_settings: {}'.format(character_settings))
 
         return dict(character_settings), 204
 
