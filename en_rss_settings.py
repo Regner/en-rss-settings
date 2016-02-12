@@ -99,9 +99,9 @@ class InternalSettings(Resource):
         app.logger.info('Internal request for feed {}.'.format(feed_id))
         
         query = client.query(kind=SETTINGS_KIND)
-        query.add_filter(feed_id, '=', 'TRUE')
+        query.add_filter(feed_id, '=', True)
         
-        return [x.id for x in query.fetch()]
+        return [x.key.id for x in query.fetch()]
     
 
 api.add_resource(ExternalSettings, '/external/')
