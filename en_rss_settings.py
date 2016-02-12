@@ -54,7 +54,7 @@ class ExternalCharacterSettings(Resource):
         character_settings = client.get(client.key(SETTINGS_KIND, character_id))
         
         if character_settings is None:
-            abort(404)
+            abort(404, 'Specified character doesn\'t have any saved settings.')
         
         return dict(character_settings)
         
