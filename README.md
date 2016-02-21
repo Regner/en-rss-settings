@@ -44,7 +44,7 @@ if the feed is a CCP official source or a third-party source.
 ```
 
 ## External Character Settings
-Route: ``/external/characters/<character_id>/
+Route: ``/external/characters/<character_id>/``
 
 ### GET
 * Auth: True
@@ -79,10 +79,10 @@ the /external/ resource.
 ```
 
 ## Internal
-Route: ```/internal/<string:feed_id>```
+Route: ``/internal/<string:feed_id>``
 
 ### GET
-Auth: False
+* Auth: False
 
 Returns a list of all character IDs that have subscribed to a given feed ID.
 
