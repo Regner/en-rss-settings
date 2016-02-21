@@ -3,9 +3,9 @@ flask==0.10.1
 flask-restful==0.3.5
 
 # Other
-gcloud==0.10.0
+gcloud==0.10.1
 eveauth==0.0.3
 requests==2.9.1
 
 # Production
-gunicorn==19.3.0
+gunicorn==19.4.5
