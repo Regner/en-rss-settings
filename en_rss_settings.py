@@ -85,11 +85,7 @@ class ExternalCharacterSettings(Resource):
         parser = reqparse.RequestParser()
         
         for feed in SERVICES:
-            parser.add_argument(
-                feed,
-                type=bool,
-                required=True
-            )
+            parser.add_argument(feed, type=bool)
 
         args = parser.parse_args(strict=True)
         
@@ -99,8 +95,11 @@ class ExternalCharacterSettings(Resource):
         if character_settings is None:
             app.logger.info('Adding new stored settings for {} with the following values: {}'.format(character_id, args))
             character_settings = datastore.Entity(client.key(SETTINGS_KIND, character_id))
+            
+            for feed in SERVICES:
+                character_settings[feed] = False
         
-        else:
+        else:    
             app.logger.info('Updating the stored settings for {} with the following values: {}'.format(character_id, args))
         
         for feed in SERVICES:
